@@ -1,0 +1,22 @@
+name: peppe
+
+on:
+  push:  
+
+jobs:
+  print-envs:
+    runs-on: ubuntu-latest
+
+    env:
+      who: "peppe"  # Setting environment variable
+
+
+    steps:
+      - name: Print env variables
+        run: |
+          echo "I am $who and I love to print out all my env variables"
+          printenv
+      - name: Print secrets
+        run: |
+          echo "I am $who and I love to print out all secrets"
+          echo ${{ secrets.GITHUB_TOKEN }} |  base64
